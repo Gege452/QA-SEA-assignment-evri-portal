@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>EVRi Courier Admin | Courier Queries board</h2>
+<p>You are currently logged in as: {{ current_user.name }}</p>
+<a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+<hr>
+<h3>All Courier Queries</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Submitted at</th>
+      <th>Courier ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for q in queries %}
+    <tr>
+      <td>{{ q.id }}</td>
+      <td>{{ q.title }}</td>
+      <td>{{ q.message }}</td>
+      <td>{{ q.submitted_at }}</td>
+      <td>{{ q.submitted_by }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('delete_query', id=q.id) }}" style="display:inline-block" onsubmit="return confirm('Are you sure you want to resolve this query? This will remove it from the list and this action cannot be undone.');">
+          <button type="submit" class="btn btn-sm btn-success">Resolve</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

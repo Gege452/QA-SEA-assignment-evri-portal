@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Feedback</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label>Title</label>
+    <input type="text" name="title" value="{{ query.title }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Message</label>
+    <textarea name="message" class="form-control" rows="5" required>{{ query.message }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="{{ url_for('view_queries') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

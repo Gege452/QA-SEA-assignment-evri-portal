@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit EVRi Courier</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ courier.name }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Region</label>
+    <input type="text" name="region" value="{{ courier.region }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Phone number</label>
+    <input type="text" name="phone" value="{{ courier.phone }}" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Email <address></address></label>
+    <input type="email" name="email" value="{{ courier.email }}" class="form-control" required>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" name="active" {% if courier.active %}checked{% endif %}>
+    <label class="form-check-label">Active</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
