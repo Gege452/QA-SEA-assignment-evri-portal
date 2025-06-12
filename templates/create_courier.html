@@ -23,9 +23,9 @@
     <input type="email" name="email" class="form-control" required>
   </div>
   <div class="mb-3">
-    <label>PIN</label>
-    <input type="password" name="pin" class="form-control" required>
-  </div>
+      <label>PIN (4 digits only)</label>
+      <input type="text" name="pin" class="form-control" pattern="\d{4}" title="Please enter a 4-digit PIN">
+    </div>
   <button type="submit" class="btn btn-success">Create</button>
   <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Cancel</a>
 </form>
